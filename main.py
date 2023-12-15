@@ -14,7 +14,7 @@ def host_is_online(host, p_list):
 
         except socket.error as e:
             pass
-
+    sock.close()
     if is_online:
         print(f"Host {host} is online.")
         return is_online, open_port_list
