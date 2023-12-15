@@ -7,6 +7,7 @@ users = {
     'user3': {'name': 'Charlie', 'age': 35},
 }
 
+
 def handle_get_request(request):
     # Parse the request and extract the requested user ID
     request_parts = request.split()
@@ -21,13 +22,15 @@ def handle_get_request(request):
 
     return response
 
+
 def handle_post_request(request):
     command = request.split(' ')
     name = command[1]
     age = command[2]
-    users[f'user{len(users)+1}'] = {'name': name, 'age': int(age)}
+    users[f'user{len(users) + 1}'] = {'name': name, 'age': int(age)}
     response = "HTTP/1.1 200 OK\n\nUser data updated"
     return response
+
 
 def main():
     host = 'localhost'
@@ -51,6 +54,7 @@ def main():
 
         client_socket.sendall(response.encode())
         client_socket.close()
+
 
 if __name__ == '__main__':
     main()
